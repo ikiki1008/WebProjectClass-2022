@@ -6,20 +6,7 @@
 <%@ taglib prefix ="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>  
 <%@ page import = "java.util.List, java.sql.Date" %>
 
-<%
-		request.setCharacterEncoding("utf-8");
-		
-		int bcode = Integer.parseInt(request.getParameter("bcode"));
-		
-		BoardDto dto = new BoardDto();
-		BoardDao dao = new BoardDao();
-		
-		//6. BoardDao에 정의된 selectOne 메소드를 호출하여 원하는 레코드를 dto에 저장하시오.
-		dto = dao.selectOne(bcode);
-		 
-		
-		pageContext.setAttribute("dto", dto);
-%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +22,7 @@
 <div class="container">
 	<h2 class="text-center font-weight-bold">상세보기</h2>
 	<br/>
-	<form action="updatePro.jsp" method="post">
+	<form action="update.do" method="post">
 		<input type="hidden" name="bcode" value="${dto.bcode}">
 		<table class="table table-striped table-hover">
 			<tr>
@@ -53,9 +40,9 @@
 			<tr>
 				<td colspan="4">
 					<input type="submit" value ="게시글 수정" >
-					<input type="button" value ="게시글 삭제" onclick ="location.href='deletePro.jsp?bcode=${dto.bcode}'">
-					<input type="button" value ="게시글 목록" onclick ="location.href='list.jsp'">
-					<input type="button" value ="게시글 등록" onclick ="location.href='insertForm.jsp'">
+					<input type="button" value ="게시글 삭제" onclick ="location.href='deletePro.do?bcode=${dto.bcode}'">
+					<input type="button" value ="게시글 목록" onclick ="location.href='list.do'">
+					<input type="button" value ="게시글 등록" onclick ="location.href='insertForm.do'">
 				</td>
 			</tr>
 		</table><br><br>

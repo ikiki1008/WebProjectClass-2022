@@ -21,16 +21,43 @@ public class boardController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		String viewPage = null;
+				
 		String com = uri.substring(uri.lastIndexOf("/")+1, uri.lastIndexOf(".do"));
 		
 		
 		if(com != null && com.equals("list")) {
-//			RequestDispatcher rd = request.getRequestDispatcher("/list.jsp");
-//			rd.forward(request, response);
+			boardService service = new BListService();
+			service.execute(request,response);
+			
 			viewPage = "/WEB-INF/view/list.jsp";
+			
 		}else if(com != null && com.equals("insertForm")){
-			viewPage = "/WEB-INF/view/insertFrom.jsp";
-		}else if(com != null && com.equals("index")) {
+			
+			boardService service = new BInsertService();
+			service.execute(request,response);
+			viewPage = "/WEB-INF/view/insertForm.jsp";
+			
+			
+		}else if(com != null && com.equals("updateForm")){
+			
+			boardService service = new BViewService();
+			service.execute(request,response);
+			viewPage = "/WEB-INF/view/updateForm.jsp";
+			
+			
+		}else if(com != null && com.equals("update")){
+			boardService service = new BUpdateService();
+			service.execute(request,response);
+			viewPage = "list.do";
+			
+			
+		}else if(com != null && com.equals("insert")) {
+			viewPage = "/WEB-INF/view/insertForm.jsp";
+			boardService service = new BInsertService();
+			service.execute(request,response);
+	
+		}
+		else if(com != null && com.equals("index")) {
 			viewPage = "/WEB-INF/view/index.jsp";
 		}
 		

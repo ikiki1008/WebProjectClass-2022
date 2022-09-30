@@ -38,7 +38,7 @@
 
 		<c:forEach var='dto' items='${dtos}'>
 			<tr>
-				<td>${dto.bcode }</a></td>
+				<td>${dto.bcode }</td>
 				<td><a href="updateForm.jsp?bcode=${dto.bcode}">${dto.subject}</a></td>
 				<td>${dto.writer}</td>
 				<td><fmt:formatDate value="${dto.regDate}"/></td>

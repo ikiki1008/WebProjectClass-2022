@@ -30,7 +30,7 @@
     -->
     
     <!-- DBCP 설정 -->
-    <Resource name ="jdbc/jskim"
+    <Resource name ="jdbc/Yu"
     auth = "Container"
     type="javax.sql.DataSource"
     driverClassName = "org.mariadb.jdbc.Driver"
