@@ -1,7 +1,6 @@
 package cs.dit.board;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -68,7 +67,7 @@ public class BoardDao {
 			)
 			{
 				while(rs.next()) {
-					BoardDto dto = new BoardDto();
+					BoardDto dto = new BoardDto(0, sql, sql, sql, sql);
 					
 					dto.setBcode(rs.getInt("bcode"));
 					dto.setId(rs.getString("id"));
@@ -93,7 +92,7 @@ public class BoardDao {
 		String sql = "SELECT BCODE, ID, PWD, NAME, EMAIL FROM BOARD WHERE BCODE=?";
 		
 		
-		BoardDto dto = new BoardDto();
+		BoardDto dto = new BoardDto(bcode, sql, sql, sql, sql);
 		
 		try (	Connection con = getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);

@@ -8,7 +8,6 @@ public class BoardDto {
 	private String pwd;
 	private String name;
 	private String email;
-	
 	public int getBcode() {
 		return bcode;
 	}
@@ -48,6 +47,5 @@ public class BoardDto {
 		this.email = email;
 	}
 	
-	public BoardDto() {}
 	
 }

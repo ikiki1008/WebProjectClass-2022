@@ -16,7 +16,7 @@ public class BViewService implements boardService {
 		
 		int bcode = Integer.parseInt(request.getParameter("bcode"));
 		
-		BoardDto dto = new BoardDto();
+		BoardDto dto = new BoardDto(bcode, null, null, null, null);
 		BoardDao dao = new BoardDao();
 		
 		//6. BoardDao에 정의된 selectOne 메소드를 호출하여 원하는 레코드를 dto에 저장하시오.

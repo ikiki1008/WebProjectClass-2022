@@ -21,7 +21,7 @@ public class BInsertService implements boardService {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 
-		BoardDto dto = new BoardDto(0, id, pwd, name, email, null); 
+		BoardDto dto = new BoardDto(0, id, pwd, name, email); 
 		BoardDao dao = new BoardDao();
 		dao.insert(dto);
 		
