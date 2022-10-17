@@ -15,6 +15,9 @@ public class BListService implements boardService {
 		
 		BoardDao dao = new BoardDao();
 		ArrayList<BoardDto> dtos = dao.list();
+		
+		int count = dao.recordCount();
+		
 		System.out.println("dtos의 갯수 : " + dtos.size());
 		//5. 이 페이지의 저장소인 pageContext에 DB에서 검색해온 dtos 값을 저장하시오.
 		request.setAttribute("dtos", dtos);

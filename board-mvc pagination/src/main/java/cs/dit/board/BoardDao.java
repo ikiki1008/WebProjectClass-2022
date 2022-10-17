@@ -57,15 +57,23 @@ public class BoardDao {
 		}
 	}
 	
-	public ArrayList<BoardDto> list(){
-		String sql = "SELECT BCODE, SUBJECT, CONTENT, WRITER, REGDATE FROM board order by bcode desc";
+	public ArrayList<BoardDto> list(int p, int numofRecords){
+
+		String sql = "SELECT * FROM BOARD LIMIT ?,?";
 		ArrayList<BoardDto> dtos = new ArrayList<BoardDto>();
 		
 		try (	Connection con = getConnection();
-				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery(sql);
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				
+//				ResultSet rs = stmt.executeQuery(sql);
 			)
 			{
+				pstmt.setInt(1, (p-1)*numofRecords);
+				pstmt.setInt(2, numofRecords);
+				
+				ResultSet rs = pstmt.executeQuery();
+				
+				
 				while(rs.next()) {
 					BoardDto dto = new BoardDto();
 					
